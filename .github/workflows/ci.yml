@@ -1,0 +1,19 @@
+name: C/C++ CI
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: install g++
+      run: sudo apt-get install g++
+    - name: build
+      run: g++ -o test reverse.cpp
+    - name: test
+      run: ./test
